@@ -6,11 +6,13 @@ vim.cmd.packadd('packer.nvim')
 return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
+  -- searching
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+  -- color scheme
 	use {
 		'rose-pine/neovim',
 		as = 'rose-pine',
@@ -18,16 +20,20 @@ return require('packer').startup(function(use)
 			---vim.cmd('colorscheme rose-pine')
 		end
 	}
+  -- file tree searching
 	use {'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}}
 	use {'nvim-treesitter/playground'}
+  -- undo tree, not sure if I want this
 	use {'mbbill/undotree'}
   -- Git stuff
-	use {'tpope/vim-fugitive'}
+	use {'tpope/vim-fugitive'} -- not sure what fugitive is doing at this point
   use {
   'lewis6991/gitsigns.nvim',
   -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
   }
+  -- navigating between tmux and ivm windows with the same keys
   use {'christoomey/vim-tmux-navigator'}
+  -- tree panel
 	use {
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
@@ -37,6 +43,14 @@ return require('packer').startup(function(use)
 			"MunifTanjim/nui.nvim",
 		}
 	}
+  -- Code to comments
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
+  -- language server setup
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		requires = {
