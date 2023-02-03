@@ -32,7 +32,12 @@ return require('packer').startup(function(use)
   -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
   }
   -- navigating between tmux and ivm windows with the same keys
-  use {'christoomey/vim-tmux-navigator'}
+  use {
+    'numToStr/Navigator.nvim',
+    config = function()
+        require('Navigator').setup()
+    end
+  }
   -- tree panel
 	use {
 		"nvim-neo-tree/neo-tree.nvim",
