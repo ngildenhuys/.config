@@ -2,28 +2,28 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 10
-    y: 10
+    x: 5
+    y: 5
 scrolling:
   # Specifying '0' will disable scrolling.
   history: 100000
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
   multiplier: 3
-font:
-  normal:
-    family: Hack Nerd Font Mono
-    style: Regular
-  bold:
-    family: Hack Nerd Font Mono
-    style: Bold
-  italic:
-    family: Hack Nerd Font Mono
-    style: Italic
-  bold_italic:
-    family: Hack Nerd Font Mono
-    style: Bold Italic
-  size: 16.0
+# font:
+#   normal:
+#     family: Hack Nerd Font Mono
+#     style: Regular
+#   bold:
+#     family: Hack Nerd Font Mono
+#     style: Bold
+#   italic:
+#     family: Hack Nerd Font Mono
+#     style: Italic
+#   bold_italic:
+#     family: Hack Nerd Font Mono
+#     style: Bold Italic
+#   size: 16.0
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 # Base16 Default Dark 256 - alacritty color config
@@ -101,14 +101,14 @@ hints:
             key: U
             mods: Control|Shift
 # mac bindings
-key_bindings:
-  - { key: Comma,     mods: Command,      command:
-      {program: "sh", args: ["-c","open ~/.config/alacritty/alacritty.yml"]}     }
-  - { key: N,         mods: Command,      action: SpawnNewInstance       }
-  - { key: Space,     mods: Alt,          chars: " "                     }
-  - { key: Back,      mods: Super, chars: "\x15" } # delete word/line
-  - { key: Left,      mods: Alt,     chars: "\x1bb"                       } # one word left
-  - { key: Right,     mods: Alt,     chars: "\x1bf"                       } # one word right
-  - { key: Left,      mods: Command, chars: "\x1bOH",   mode: AppCursor   } # Home
-  - { key: Right,     mods: Command, chars: "\x1bOF",   mode: AppCursor   } # End
+# key_bindings:
+#   - { key: Comma,     mods: Command,      command:
+#       {program: "sh", args: ["-c","open ~/.config/alacritty/alacritty.yml"]}     }
+#   - { key: N,         mods: Command,      action: SpawnNewInstance       }
+#   - { key: Space,     mods: Alt,          chars: " "                     }
+#   - { key: Back,      mods: Super, chars: "\x15" } # delete word/line
+#   - { key: Left,      mods: Alt,     chars: "\x1bb"                       } # one word left
+#   - { key: Right,     mods: Alt,     chars: "\x1bf"                       } # one word right
+#   - { key: Left,      mods: Command, chars: "\x1bOH",   mode: AppCursor   } # Home
+#   - { key: Right,     mods: Command, chars: "\x1bOF",   mode: AppCursor   } # End
 
