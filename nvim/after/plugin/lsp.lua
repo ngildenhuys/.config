@@ -1,13 +1,19 @@
 -- Learn the keybindings, see :help lsp-zero-keybindings
 -- Learn to configure LSP servers, see :help lsp-zero-api-showcase
-local lsp = require('lsp-zero')
+local lsp = require('lsp-zero').preset({
+  name = 'minimal',
+  set_lsp_keymaps = true,
+  manage_nvim_cmp = true,
+  suggest_lsp_servers = false,
+})
+
 -- Ensure which lsp's are installed
 lsp.ensure_installed({
-  'sumneko_lua',
   'rust_analyzer',
   'verible',
 })
 
+lsp.nvim_workspace()
 
 -- completion setup
 local cmp = require('cmp')
@@ -22,21 +28,21 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 
 -- set icon preferences
 lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
+  suggest_lsp_servers = false,
+  sign_icons = {
+    error = 'E',
+    warn = 'W',
+    hint = 'H',
+    info = 'I'
+  }
 })
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
   if client.name == "eslint" then
-      vim.cmd.LspStop('eslint')
-      return
+    vim.cmd.LspStop('eslint')
+    return
   end
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -54,5 +60,5 @@ end)
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true,
+  virtual_text = true,
 })

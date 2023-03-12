@@ -5,7 +5,7 @@ vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
 	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+	use {'wbthomason/packer.nvim'}
   -- searching
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -23,8 +23,6 @@ return require('packer').startup(function(use)
   -- file tree searching
 	use {'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}}
 	use {'nvim-treesitter/playground'}
-  -- undo tree, not sure if I want this
-	use {'mbbill/undotree'}
   -- Git stuff
 	use {'tpope/vim-fugitive'} -- not sure what fugitive is doing at this point
   use {
