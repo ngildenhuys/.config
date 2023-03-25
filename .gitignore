@@ -1,1 +1,8 @@
-tmux/plugins
+*.*
+!alacritty/*
+!nvim/*
+# nvim generated files
+nvim/plugin/packer_compiled.lua
+!shellrc/*
+!tmux/*
+!zellij/*
