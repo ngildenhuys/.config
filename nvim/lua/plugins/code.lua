@@ -1,6 +1,6 @@
 return {
   -- neovim dev suggestions
-  {"folke/neodev.nvim"}, -- don't know if it works
+  { "folke/neodev.nvim" }, -- don't know if it works
 
   -- Code to comments
   {
@@ -11,10 +11,10 @@ return {
     cmd = { "TroubleToggle", "Trouble" },
     opts = { use_diagnostic_signs = true },
     keys = {
-      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
       { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-      { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-      { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+      { "<leader>xL", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
+      { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
       {
         "[q",
         function()
@@ -38,26 +38,41 @@ return {
         desc = "Next trouble/quickfix item",
       },
     },
-  }, -- TODO : put in todo and fixme shortcuts also fix todo searching
+  },
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      search = {
+        command = "rg",
+        args = {
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+        },
+        -- regex that will be used to match keywords.
+        -- don't replace the (KEYWORDS) placeholder
+        pattern = [[\b(KEYWORDS)\s*:]], -- ripgrep regex
+      }
+    },
     config = true,
     -- stylua: ignore
     keys = {
-      { "[t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "]t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      { "[t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+      { "]t",         function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+      { "<leader>xt", "<cmd>TodoTrouble<cr>",                              desc = "Todo (Trouble)" },
+      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>",      desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>ft", "<cmd>TodoTelescope<cr>",                            desc = "Todo" },
     },
   }, -- works great
   {
     'nvim-lualine/lualine.nvim',
     dependencies = {
-      {'nvim-tree/nvim-web-devicons', opt = true },
-      {"SmiteshP/nvim-navic"}},
+      { 'nvim-tree/nvim-web-devicons', opt = true },
+      { "SmiteshP/nvim-navic" } },
     init = function()
       local navic = require("nvim-navic")
       require('lualine').setup({
@@ -86,4 +101,3 @@ return {
   }, -- works fine
 
 }
-

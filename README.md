@@ -9,3 +9,5 @@ Preferred working config folder
 exa
 neovim
 git
+nerdfont
+

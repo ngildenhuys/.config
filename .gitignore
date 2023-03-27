@@ -1,8 +1,7 @@
-*.*
 !alacritty/*
 !nvim/*
 # nvim generated files
-nvim/plugin/packer_compiled.lua
+nvim/lazy-lock.json
 !shellrc/*
 !tmux/*
 !zellij/*
